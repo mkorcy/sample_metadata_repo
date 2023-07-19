@@ -14,9 +14,10 @@ jobs:
 
       - name: Prepare the metadata file
         run: |
-          mkdir -p ${{ github.repository }}
-          cp metadata.json ${{ github.repository }}/metadata.json
-
+          IFS='/' read -ra ADDR <<< "${{ github.repository }}"
+          REPO_NAME="${ADDR[1]}"
+          mkdir "${REPO_NAME}"
+          cp metadata.json "${REPO_NAME}/metadata.json"
       - name: Push to another repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
