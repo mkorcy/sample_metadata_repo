@@ -14,7 +14,7 @@ jobs:
 
       - name: Prepare the metadata file
         run: |
-          mkdir ${{ github.repository }}
+          mkdir -p ${{ github.repository }}
           cp metadata.json ${{ github.repository }}/metadata.json
 
       - name: Push to another repo
