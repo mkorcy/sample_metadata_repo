@@ -2,8 +2,6 @@ name: Sync Metadata
 
 on:
   push:
-    paths:
-      - 'metadata.json'
 
 jobs:
   sync:
