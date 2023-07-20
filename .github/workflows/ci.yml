@@ -19,6 +19,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
+          target-directory: "${{ github.event.repository.name }}"
           source-directory: '${{ github.event.repository.name }}'
           destination-github-username: '${{ vars.USER }}'
           destination-repository-name: '${{ vars.DESTINATION_REPO }}'
