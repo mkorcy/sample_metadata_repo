@@ -12,14 +12,14 @@ jobs:
 
       - name: Prepare the metadata file
         run: |
-          mkdir "${GITHUB_REPOSITORY#*/}"
+          mkdir "${{ github.event.repository.name }}"
           cp metadata.json "${GITHUB_REPOSITORY#*/}/metadata.json"
       - name: Push to another repo
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: '${GITHUB_REPOSITORY#*/}'
+          source-directory: '${{ github.event.repository.name }}'
           destination-github-username: '${{ vars.USER }}'
           destination-repository-name: '${{ vars.DESTINATION_REPO }}'
           user-email: '${{ vars.EMAIL }}'
